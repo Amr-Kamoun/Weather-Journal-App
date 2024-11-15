@@ -1,8 +1,7 @@
-const apiKey = 'Ye2ea705affe932c99d83e46d5bd8bedf'; 
-const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
+const apiKey = 'Ye2ea705affe932c99d83e46d5bd8bedf';
 
 const getWeatherData = async (zipCode) => {
-  const url = `${baseURL}${zipCode},us&appid=${apiKey}&units=imperial`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -16,7 +15,6 @@ const getWeatherData = async (zipCode) => {
     throw error;
   }
 };
-
 
 const updateUI = async () => {
   try {
@@ -33,11 +31,11 @@ const updateUI = async () => {
 };
 
 document.getElementById('generate').addEventListener('click', async () => {
-  const zipCode = document.getElementById('zip').value;
+  const zipCode = document.getElementById('zip').value; // Correctly gets the ZIP code from input
   const feelings = document.getElementById('feelings').value;
 
   if (!zipCode || !feelings) {
-    alert('Please enter both the zip code and your feelings.');
+    alert('Please enter both the ZIP code and your feelings.');
     return;
   }
 
