@@ -1,14 +1,14 @@
-const apiKey = 'Ye2ea705affe932c99d83e46d5bd8bedf';
+const apiKey = '5d73b34396a04d87a5903507241511'; // Your WeatherAPI.com API Key
 
 const getWeatherData = async (zipCode) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
+  const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
     if (response.ok) {
       return data;
     } else {
-      throw new Error(data.message || 'Error fetching weather data');
+      throw new Error(data.error.message || 'Error fetching weather data');
     }
   } catch (error) {
     alert(`Failed to fetch weather data: ${error.message}`);
@@ -31,8 +31,8 @@ const updateUI = async () => {
 };
 
 document.getElementById('generate').addEventListener('click', async () => {
-  const zipCode = document.getElementById('zip').value; // Correctly gets the ZIP code from input
-  const feelings = document.getElementById('feelings').value;
+  const zipCode = document.getElementById('zip').value; // Fetch ZIP code from the input
+  const feelings = document.getElementById('feelings').value; // Fetch user feelings
 
   if (!zipCode || !feelings) {
     alert('Please enter both the ZIP code and your feelings.');
@@ -47,7 +47,7 @@ document.getElementById('generate').addEventListener('click', async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         date,
-        temp: weatherData.main.temp,
+        temp: weatherData.current.temp_f, // Extract temperature in Fahrenheit
         content: feelings,
       }),
     });
