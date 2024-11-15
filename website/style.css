@@ -1,64 +1,86 @@
-/* Body styling with background image */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background: url('Background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white; /* Makes text more readable over the background */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Optional text shadow */
-  }
-  
-  /* Title styling */
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Input and textarea styling */
-  input, textarea {
-    width: 300px;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Button styling */
-  button {
-    padding: 10px 15px;
-    margin: 10px 0;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Container for displaying data */
-  #entryHolder {
-    margin-top: 20px;
-    width: 320px;
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-  }
-  
-  #entryHolder div {
-    margin-bottom: 10px;
-    padding: 5px;
-    font-size: 16px;
-  }
-  
+body { 
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: url('Background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #00509e;
+}
+
+form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  text-align: left;
+  color: #333;
+  width: 320px;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  background-color: #00509e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #003f7d;
+}
+
+#entryHolder {
+  margin-top: 20px;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: left;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#entryHolder div {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  padding: 5px;
+}

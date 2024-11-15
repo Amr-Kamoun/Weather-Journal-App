@@ -1,5 +1,6 @@
-const apiKey = '5d73b34396a04d87a5903507241511'; // Your WeatherAPI.com API Key
+const apiKey = '5d73b34396a04d87a5903507241511'; // WeatherAPI.com API Key
 
+// Fetch weather data from WeatherAPI.com
 const getWeatherData = async (zipCode) => {
   const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`;
   try {
@@ -16,6 +17,7 @@ const getWeatherData = async (zipCode) => {
   }
 };
 
+// Update UI by fetching data from the GET endpoint
 const updateUI = async () => {
   try {
     const request = await fetch('/all');
@@ -30,8 +32,9 @@ const updateUI = async () => {
   }
 };
 
+// Handle the Generate button click event
 document.getElementById('generate').addEventListener('click', async () => {
-  const zipCode = document.getElementById('zip').value; // Fetch ZIP code from the input
+  const zipCode = document.getElementById('zip').value; // Fetch ZIP code from input
   const feelings = document.getElementById('feelings').value; // Fetch user feelings
 
   if (!zipCode || !feelings) {
@@ -40,17 +43,24 @@ document.getElementById('generate').addEventListener('click', async () => {
   }
 
   try {
+    // Fetch weather data
     const weatherData = await getWeatherData(zipCode);
-    const date = new Date().toLocaleDateString();
+
+    // Create the data object to be sent to the server
+    const dataToPost = {
+      date: new Date().toLocaleDateString(),
+      temp: weatherData.current.temp_f, // Temperature in Fahrenheit
+      content: feelings,
+    };
+
+    // Send data to the server POST endpoint
     await fetch('/addData', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        date,
-        temp: weatherData.current.temp_f, // Extract temperature in Fahrenheit
-        content: feelings,
-      }),
+      body: JSON.stringify(dataToPost),
     });
+
+    // Update the UI with the data fetched from the server
     updateUI();
   } catch (error) {
     console.error('Error:', error);
